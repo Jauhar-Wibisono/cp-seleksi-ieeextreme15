@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 5e5+4, sqrtn = sqrt(maxn);
+const int maxn = 5e4+4, sqrtn = sqrt(maxn);
 int n, q;
 vector<int> adjl[maxn];
 vector<pair<int, int>> que[maxn];
