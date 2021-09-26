@@ -13,13 +13,13 @@ void solve(vector<string> ops)
 
     string types;
     strin >> types;
-    if (types == "push")
+    if (types == "antri")
     {
       int x;
       strin >> x;
       a[itr++] = x;
     }
-    if (types == "pop")
+    if (types == "selesai")
     {
       if (--itr)
       {
@@ -27,7 +27,7 @@ void solve(vector<string> ops)
       }
       b[itr] = 0;
     }
-    if (types == "inc")
+    if (types == "traktir")
     {
       int x, y;
       strin >> x >> y;
@@ -42,11 +42,6 @@ void solve(vector<string> ops)
     {
       cout << a[itr - 1] + b[itr - 1];
     }
-    cout << endl;
-    for (auto ax : b)
-    {
-      cout << ax << endl;
-    }
     cout << " ";
   }
 }
@@ -56,6 +51,27 @@ int main()
   vector<string> op;
   int n;
   cin >> n;
-  vector<string> operations = {"push 4", "push 8", "inc 1 1", "inc 2 1", "pop", "pop"};
+  vector<string> operations;
+  for (int i = 0; i < n; i++)
+  {
+    string s;
+    int x = -1, y = -1;
+    cin >> s;
+    string a;
+    a += s;
+    if (s == "antri")
+    {
+      cin >> x;
+      a += (" " + to_string(x));
+    }
+    else if (s == "traktir")
+    {
+      cin >> x >> y;
+      a += (" " + to_string(x));
+      a += (" " + to_string(y));
+    }
+    operations.push_back(a);
+  }
+
   solve(operations);
 }
