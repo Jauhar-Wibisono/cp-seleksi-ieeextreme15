@@ -44,7 +44,7 @@ void solve(vector<string> ops)
     }
     cout << " ";
   }
-  cout << endl;
+  //cout << endl;
 }
 
 int main()
