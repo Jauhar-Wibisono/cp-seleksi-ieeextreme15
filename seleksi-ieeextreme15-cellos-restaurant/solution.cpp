@@ -7,6 +7,7 @@ void solve(vector<string> ops)
   vector<int> a(n), b(n);
 
   int itr = 0;
+  int i = 0;
   for (string op : ops)
   {
     stringstream strin(op);
@@ -42,7 +43,8 @@ void solve(vector<string> ops)
     {
       cout << a[itr - 1] + b[itr - 1];
     }
-    cout << " ";
+    if (i+1 < n) cout << " ";
+    i++;
   }
   //cout << endl;
 }
