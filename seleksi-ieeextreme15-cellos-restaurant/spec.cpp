@@ -68,7 +68,7 @@ protected:
         "0",
         "0",
     });
-    Output({"4 EMPTY 3 5 2 3 6 1 1 4 1 8"});
+    Output({"4 EMPTY 3 5 2 3 6 1 1 4 1 8 "});
   }
 
   void SampleTestCase2()
