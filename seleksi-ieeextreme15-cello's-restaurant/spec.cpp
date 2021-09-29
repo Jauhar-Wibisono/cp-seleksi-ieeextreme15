@@ -6,12 +6,14 @@ class ProblemSpec : public BaseProblemSpec
 protected:
   int N;
   string op;
-  vector<int> op_num, ans;
+  vector<int> ans;
+  vector<vector<int>> op_num;
+  vector<vector<int>> op_case;
 
   void InputFormat()
   {
     LINE(N);
-    LINES(op, op_num) % SIZE(N);
+    LINES(op_num) % SIZE(N);
   }
 
   void OutputFormat()
@@ -28,22 +30,20 @@ protected:
   void Constraints()
   {
     CONS(1 <= N <= 1e9);
-    CONS(isValidOperationName(op));
     CONS(isValidOperationNumber(N, op_num));
   }
 
 private:
-  bool isValidOperationName(string s)
-  {
-    return (s == "antri" || s == "selesai" || s == "traktir");
-  }
-
-  bool isValidOperationNumber(int n, vector<int> a)
+  bool isValidOperationNumber(int n, vector<vector<int>> a)
   {
     bool ret = a.size() == n;
     for (int i = 0; i < a.size(); i++)
     {
-      ret = ret && (1 <= a[i] && a[i] <= 1e9);
+      for (int j = 0; j < a[i].size(); j++)
+      {
+        ret = ret && (1 <= a[i][j] && a[i][j] <= 1e9);
+      }
+      ret = ret && ((a[i][0] == 0) || (a[i][0] == 1) || (a[i][0] == 2));
     }
     return ret;
   }
@@ -55,18 +55,18 @@ protected:
   void SampleTestCase1()
   {
     Input({"12",
-           "antri 4",
-           "selesai"
-           "antri 3",
-           "antri 5",
-           "antri 2",
-           "traktir 3 1",
-           "selesai",
-           "antri 1",
-           "traktir 2 2",
-           "antri 4"
-           "selesai"
-           "selesai"});
+           "1 4",
+           "0"
+           "1 3",
+           "1 5",
+           "1 2",
+           "2 3 1",
+           "0",
+           "1 1",
+           "2 2 2",
+           "1 4"
+           "0"
+           "0"});
     Output({"4 EMPTY 3 5 2 3 6 1 1 4 1 8"});
   }
 
@@ -74,13 +74,51 @@ protected:
   {
     for (int i = 0; i < 10; i++)
     {
-      vector<string> op;
-
-      CASE(N = rnd.nextInt(1, 1000));
+      CASE(N = rnd.nextInt(1, 1e3), generateOperationsRandom(N, op_num));
     }
     for (int i = 0; i < 20; i++)
     {
-      CASE(N = rnd.nextInt(1e10, 1e18));
+      CASE(N = rnd.nextInt(1e3, 1e5), generateOperationsRandom(N, op_num));
+    }
+  }
+
+private:
+  void generateOperationsRandom(int n, vector<vector<int>> &a)
+  {
+    int AntriCount = 1;
+    a.push_back({1, rnd.nextInt(1, 1e5)});
+    for (int i = 1; i < n; i++)
+    {
+      vector<int> v;
+      int currOp = 1;
+      if (AntriCount > 1)
+      {
+        currOp = rnd.nextInt(0, 2);
+      }
+      else
+      {
+        currOp = rnd.nextInt(1, 2);
+      }
+
+      if (currOp == 0)
+      {
+        AntriCount--;
+        v.push_back(0);
+      }
+      else if (currOp == 1)
+      {
+        AntriCount++;
+        v.push_back(1);
+        v.push_back(rnd.nextInt(1, 1e5));
+      }
+      else
+      {
+        v.push_back(2);
+        int upper_bound = rnd.nextInt(1, AntriCount);
+        v.push_back(rnd.nextInt(1, AntriCount / upper_bound));
+        v.push_back(rnd.nextInt(AntriCount / upper_bound, AntriCount));
+      }
+      a.push_back(v);
     }
   }
 };
