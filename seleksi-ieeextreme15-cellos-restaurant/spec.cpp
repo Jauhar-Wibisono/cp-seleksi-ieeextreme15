@@ -6,7 +6,7 @@ class ProblemSpec : public BaseProblemSpec
 protected:
   int N;
   string op;
-  string ans;
+  vector<string> ans;
   vector<vector<int>> op_num;
 
   void InputFormat()
@@ -17,7 +17,7 @@ protected:
 
   void OutputFormat()
   {
-    RAW_LINE(ans);
+    LINE(ans % SIZE(N));
   }
 
   void GradingConfig()
@@ -68,7 +68,7 @@ protected:
         "0",
         "0",
     });
-    Output({"4 EMPTY 3 5 2 3 6 1 1 4 1 8 "});
+    Output({"4 EMPTY 3 5 2 3 6 1 1 4 1 8"});
   }
 
   void SampleTestCase2()
@@ -77,7 +77,7 @@ protected:
            "1 4",
            "1 3",
            "1 5"});
-    Output({"4 3 5 "});
+    Output({"4 3 5"});
   }
 
   void BeforeTestCase()
