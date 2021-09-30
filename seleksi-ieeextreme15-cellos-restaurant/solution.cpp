@@ -43,10 +43,11 @@ void solve(vector<string> ops)
     {
       cout << a[itr - 1] + b[itr - 1];
     }
-    if (i+1 < n) cout << " ";
+    if (i + 1 < n)
+      cout << " ";
     i++;
   }
-  //cout << endl;
+  cout << endl;
 }
 
 int main()

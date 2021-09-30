@@ -17,7 +17,7 @@ struct T
 };
 
 constexpr ll inf = 1e18;
-map<char, int> c2dir{{'U', 0}, {'D', 1}, {'L', 2}, {'R', 3}};
+map<char, int> c2dir{{'N', 0}, {'S', 1}, {'W', 2}, {'E', 3}};
 vi dx{0, 0, -1, 1}, dy{1, -1, 0, 0};
 vector<T> f;
 

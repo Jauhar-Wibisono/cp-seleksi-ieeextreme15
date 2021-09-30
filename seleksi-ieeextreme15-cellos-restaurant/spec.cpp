@@ -36,15 +36,15 @@ private:
   bool isValidOperationNumber(int n, vector<vector<int>> a)
   {
     bool ret = a.size() == n;
-    // for (int i = 0; i < a.size(); i++)
-    // {
-    //   for (int j = 0; j < a[i].size(); j++)
-    //   {
-    //     ret = ret && (1 <= a[i][j] && a[i][j] <= 1e5);
-    //   }
-    //   ret = ret && ((a[i][0] == 0) || (a[i][0] == 1) || (a[i][0] == 2));
-    // }
-    return true;
+    for (int i = 0; i < a.size(); i++)
+    {
+      for (int j = 1; j < a[i].size(); j++)
+      {
+        ret = ret && (1 <= a[i][j] && a[i][j] <= 1e5);
+      }
+      ret = ret && ((a[i][0] == 0) || (a[i][0] == 1) || (a[i][0] == 2));
+    }
+    return ret;
   }
 };
 
@@ -87,11 +87,11 @@ protected:
 
   void TestCases()
   {
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 10; i++)
     {
       CASE(N = rnd.nextInt(1, 1e3), generateOperationsRandom(N, op_num));
     }
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 20; i++)
     {
       CASE(N = rnd.nextInt(1e3, 1e5), generateOperationsRandom(N, op_num));
     }
