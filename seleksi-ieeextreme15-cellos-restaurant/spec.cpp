@@ -95,9 +95,33 @@ protected:
     {
       CASE(N = rnd.nextInt(1e3, 1e5), generateOperationsRandom(N, op_num));
     }
+
+    for (int i = 0; i < 5; i++)
+    {
+      CASE(N = 1e5, generateTCHaramBuatWibi(N, op_num));
+    }
   }
 
 private:
+  void generateTCHaramBuatWibi(int n, vector<vector<int>> &a)
+  {
+    for (int i = 0; i < n / 2; i++)
+    {
+      vector<int> v;
+      v.push_back(1);
+      v.push_back(rnd.nextInt(3e4, 5e4 - 1));
+      a.push_back(v);
+    }
+
+    for (int i = 0; i < n / 2; i++)
+    {
+      vector<int> v;
+      v.push_back(2);
+      v.push_back(rnd.nextInt(3e4, 5e4 - 1));
+      a.push_back(v);
+    }
+  }
+
   void generateOperationsRandom(int n, vector<vector<int>> &a)
   {
     int AntriCount = 1;
