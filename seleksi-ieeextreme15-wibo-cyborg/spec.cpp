@@ -97,21 +97,4 @@ private:
       }
     }
   }
-
-  void generateSnake(int n, vector<char> &a, vector<int> &b)
-  {
-    string dir = "NESW";
-    int i = 0;
-    while (i < n)
-    {
-      int j = 0;
-      while (j < 2 && i < n)
-      {
-        a.push_back(dir[i % 4]);
-        b.push_back(i + 1);
-        i++;
-        j++;
-      }
-    }
-  }
 };
