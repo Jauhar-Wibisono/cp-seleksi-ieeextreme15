@@ -48,7 +48,7 @@ private:
     bool ret = a.size() == n;
     for (int i = 0; i < a.size(); i++)
     {
-      ret = ret && (1 <= a[i] && a[i] <= 1e5);
+      ret = ret && (1 <= a[i] && a[i] <= 1e9);
     }
     return ret;
   }
@@ -60,27 +60,56 @@ protected:
   void SampleTestCase1()
   {
     Input({"5",
-           "U 2",
-           "R 3",
-           "D 1",
-           "L 5",
-           "U 2"});
+           "N 2",
+           "E 3",
+           "S 1",
+           "W 5",
+           "N 2"});
     Output({"9"});
+  }
+
+  void BeforeTestCase()
+  {
+    Dist.clear();
+    Dir.clear();
   }
 
   void TestCases()
   {
+    for (int i = 0; i < 5; i++)
+    {
+      CASE(N = 4, generateRectangle(N, Dir, Dist));
+    }
     for (int i = 0; i < 10; i++)
     {
-      CASE(N = rnd.nextInt(1, 1000), generateSpiral(N, Dir, Dist));
+      CASE(N = rnd.nextInt(100, 1e5), generateSpiral(N, Dir, Dist));
     }
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 10; i++)
     {
-      CASE(N = rnd.nextInt(1e10, 1e18));
+      CASE(N = (3 * rnd.nextInt(1, 1e3)), generateStair(N, Dir, Dist));
+    }
+    for (int i = 0; i < 10; i++)
+    {
+      CASE(N = (3 * rnd.nextInt(1e3, 2e4)), generateStair(N, Dir, Dist));
     }
   }
 
 private:
+  void generateRectangle(int n, vector<char> &a, vector<int> &b)
+  {
+    string dir = "NESW";
+    int x = rnd.nextInt(100000, 1e9);
+    int y = rnd.nextInt(100000, 1e9);
+    a.push_back(dir[0]);
+    b.push_back(x);
+    a.push_back(dir[1]);
+    b.push_back(y);
+    a.push_back(dir[2]);
+    b.push_back(x);
+    a.push_back(dir[3]);
+    b.push_back(y);
+  }
+
   void generateSpiral(int n, vector<char> &a, vector<int> &b)
   {
     string dir = "NESW";
@@ -95,6 +124,36 @@ private:
         i++;
         j++;
       }
+    }
+  }
+
+  void generateStair(int n, vector<char> &a, vector<int> &b)
+  {
+    string dir1 = "NE";
+    string dir2 = "WS";
+
+    for (int i = 0; i < n / 3; i++)
+    {
+      if (i % 2)
+      {
+        a.push_back(dir1[i % 2]);
+        b.push_back(rnd.nextInt(1, 1000));
+      }
+      else
+      {
+        a.push_back(dir1[i % 2]);
+        b.push_back(rnd.nextInt(1, 1000));
+      }
+    }
+    for (int i = 0; i < n / 3; i++)
+    {
+      a.push_back('S');
+      b.push_back(rnd.nextInt(1, 1000));
+    }
+    for (int i = 0; i < n / 3; i++)
+    {
+      a.push_back('W');
+      b.push_back(rnd.nextInt(10, 1000));
     }
   }
 };

@@ -24,7 +24,7 @@ protected:
 
   void Constraints()
   {
-    CONS(1 <= N <= 1e18);
+    CONS(1 <= N <= 1e3);
   }
 };
 
@@ -37,7 +37,7 @@ protected:
     Output({"1"});
   }
 
-  void SampleTestCase1()
+  void SampleTestCase2()
   {
     Input({"3"});
     Output({"3"});
@@ -45,13 +45,13 @@ protected:
 
   void TestCases()
   {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 15; i++)
     {
-      CASE(N = rnd.nextInt(1, 1000));
+      CASE(N = rnd.nextInt(1, 100));
     }
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 25; i++)
     {
-      CASE(N = rnd.nextInt(1e10, 1e18));
+      CASE(N = rnd.nextInt(100, 1000));
     }
   }
 };
