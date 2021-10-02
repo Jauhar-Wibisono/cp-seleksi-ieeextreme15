@@ -51,6 +51,11 @@ int main(int argc, char* argv[]) {
         sum += a[idx-1];
         sum %= m;
     }
+    int over_idx;
+    if (cin >> over_idx){
+        feedback << "too many indices" << endl;
+        return wa();
+    }
 
     if (sum != 0){
         feedback << "sum is not divisible by m" << endl;
