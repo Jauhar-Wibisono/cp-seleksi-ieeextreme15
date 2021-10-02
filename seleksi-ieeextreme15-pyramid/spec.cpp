@@ -49,7 +49,7 @@ protected:
     {
         Input({"4",
                "1 2 3 4"});
-        Output({"65"});
+        Output({"55"});
     }
 
     void TestCases()
