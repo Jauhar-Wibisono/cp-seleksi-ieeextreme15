@@ -16,17 +16,26 @@ long long inv(long long a){
     return pangkat(a, mod-2);
 }
 
-long long n, a, c, ans;
+long long n, a[200069], c, ans;
 
 int main(){
     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 	cin >> n;
+	for(int i=0; i<n; i++){
+        cin >> a[i];
+	}
+	sort(a, a+n);
+
 	c = 1;
 	ans = 0;
 	for(int i=0; i<n; i++){
         c = c*(n+1-i)%mod*inv(i+1)%mod;
-        cin >> a;
-        ans = (ans + a*(c-1))%mod;
+        if(i<n/2){
+            ans = (ans + a[2*(n/2-i)-1]*(c-1))%mod;
+        }else{
+            ans = (ans + a[2*(i-n/2)]*(c-1))%mod;
+        }
+
 	}
 	cout << ans << endl;
 }
