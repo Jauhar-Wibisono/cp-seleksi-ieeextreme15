@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\lfoot{Seleksi IEEEXtreme 15.0 ITB}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Berlayar} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1 s \\    % jangan lupa ganti time limit
+        Batas Memori & 256 MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Di kepulauan Claddish terdapat $N+1$ pulau yang berjejeran dari barat ke timur dan dinomori $0$ sampai $N$. Setiap pulau memiliki $N$ kapal, dinomori $1$ sampai $N$. Kapal $i$ di pulau $j$ akan membawa penumpang dari pulau $j$ ke pulau $(j+i)$ (apabila pulau tersebut ada).
+
+Kunkka akan menempuh perjalanan dari pulau $0$ dengan cara berikut.
+
+\begin{itemize}
+    \item Pertama, Kunkka akan menaiki kapal $K$ dari pulau $0$.
+    \item Lalu, ia akan melanjutkan perjalanannya dengan aturan berikut. Misalkan Kunkka menaiki kapal bernomor $p$ untuk mencapai pulau tempatnya sekarang dari pulau sebelumnya. Untuk mencapai pulau selanjutnya, Kunkka akan menaiki kapal bernomor $(p-1)$, $p$, atau $(p+1)$. Perhatikan bahwa Kunkka tidak dapat memilih nomor kapal yang tidak ada atau menaiki kapal ke pulau yang tidak ada.
+\end{itemize}
+
+Didefinisikan rute kapal sebagai sekuens nomor kapal yang dinaiki Kunkka dengan cara di atas. Ada berapa banyak rute kapal berbeda yang membawa Kunkka ke pulau $N$? Jawablah dalam modulo $10^9+7$!
+
+Dua rute kapal $S$ dan $T$ dianggap berbeda apabila salah satu dari dua syarat berikut dipenuhi.
+
+\begin{itemize}
+    \item Banyak kapal di $S$ dan $T$ berbeda.
+    \item Terdapat bilangan bulat positif $i$ sehingga $S_i \neq T_i$ (dengan kata lain, kapal ke-$i$ yang diambil di rute $S$ dan rute $R$ berbeda).
+\end{itemize}
+
+\subsection*{Format Masukan}
+Masukan terdiri atas satu baris berisi dua bilangan bulat $N$ dan $K$ $(1 \leq K \leq N \leq 3 \times 10^4)$. $N$ menyatakan banyak pulau (dikurangi satu) dan banyak kapal di setiap pulau, sedangkan $K$ menyatakan kapal pertama yang dinaiki Kunkka.
+
+\subsection*{Format Keluaran}
+Keluaran terdiri atas satu baris berisi bilangan bulat yang menyatakan banyak rute kapal berbeda yang membawa Kunkka ke pulau $N$ dimodulo $10^9+7$.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5 2
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+5 4
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+0
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+21487 4
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+631858925
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Rute-rute kapal yang dapat diambil Kunkka pada contoh 1 adalah sebagai berikut.
+\begin{itemize}
+    \item $[2, 3]$
+    \item $[2, 2, 1]$
+    \item $[2, 1, 2]$
+    \item $[2, 1, 1, 1]$
+\end{itemize}
+Pada contoh 2, Kunkka hanya dapat menaiki kapal bernomor $3$, $4$, dan $5$ dari pulau $4$. Di antara kapal yang bisa dinaikinya, tidak ada kapal yang membawanya ke pulau 5, sehingga jawaban contoh 2 adalah $0$.
+
+\end{document}

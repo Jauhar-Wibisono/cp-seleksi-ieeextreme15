@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\lfoot{Seleksi IEEEXtreme 15.0 ITB}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Kue} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1 s \\    % jangan lupa ganti time limit
+        Batas Memori & 256 MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Mortimer ingin membelikan kue untuk $M$ orang muridnya. Karena belum memiliki kue, ia pergi ke toko kue Beatrix.
+
+Di toko kue Beatrix terdapat $N$ bungkusan kue yang dinomori $1$ sampai $N$. Bungkusan ke-$i$ berisi $A_i$ kue. Agar adil, Mortimer ingin memilih beberapa bungkusan sehingga total jumlah kue di dalam bungkusan-bungkusan tersebut dapat dibagi habis oleh jumlah muridnya, yaitu $M$. Bantulah Mortimer mencari satu kemungkinan kumpulan bungkusan yang dapat dipilihnya, atau nyatakan bahwa tidak ada kumpulan bungkusan yang dapat dipilihnya!
+
+\subsection*{Format Masukan}
+Baris pertama masukan berisi dua bilangan bulat $N$ dan $M$ $(1 \leq M < N \leq 2\times10^5)$ - banyak bungkusan kue dan banyak murid Mortimer. 
+
+Baris berikutnya berisi $N$ buah bilangan bulat $A_1, A_2, ..., A_N$ $(1 \leq A_1, A_2, ..., A_N \leq 10^9)$ - banyak kue di bungkusan-bungkusan.
+
+\subsection*{Format Keluaran}
+Apabila tidak ada kumpulan bungkusan dengan total jumlah kue yang dapat dibagi habis oleh jumlah murid Mortimer, keluaran berisi satu bilangan $-1$.
+
+Apabila sebaliknya, baris pertama keluaran berisi satu bilangan bulat $K$ $(1 \leq K \leq N)$ yang menyatakan banyak kantong di kumpulan kantong yang dapat dipilih Mortimer. Baris berikutnya berisi $K$ bilangan bulat yang menyatakan nomor-nomor kantong di kumpulan kantong. Apabila terdapat banyak kemungkinan jawaban, \textbf{keluarkan yang mana saja}.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5 4
+1 2 3 7 5
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+2
+1 4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+5 3
+2 2 2 2 2
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+3
+1 3 4
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 3}
+\begin{lstlisting}
+3 2
+8 12 16
+\end{lstlisting}
+\columnbreak
+
+\subsection*{Contoh Keluaran 3}
+\begin{lstlisting}
+1
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh 1, total jumlah kue adalah $A_1 + A_4 = 1 + 7 = 8$ sehingga dapat dibagi habis oleh jumlah murid Mortimer, yaitu $4$.
+
+\end{document}

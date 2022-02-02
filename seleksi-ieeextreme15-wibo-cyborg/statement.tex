@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\lfoot{Seleksi IEEEXtreme 15.0 ITB}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Wibo Cyborg} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 64MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Pada tahun 3021, terdapat seorang profesor bernama Wibo, profesor tersebut sedang gabut dan akhirnya ia menciptakan sebuah cyborg yang bernama Rizzrack. Cyborg ini masih dalam tahap prototype dan profesor Wibo ingin melakukan testing untuk menghitung jarak yang dapat ditempuh Rizzrack. Rizzrack dapat menerima N perintah. Dan seperti cyborg pada umumnya, Rizzrack mampu mendapatkan perintah untuk naik, turun, ke kanan atau ke kiri. Rizzrack akan berhenti jika telah menjalankan semua perintah majikannya. Namun terdapat keanehan dari cyborg ini, jika cyborg ini kembali ke point / menuju jalur yang telah ia lalui, maka cyborg tersebut akan berhenti dengan sendirinya.
+
+Tugas anda adalah membantu profesor Wibo untuk menghitung total dari jarak yang ditempuh oleh cyborg ini.
+
+\subsection*{Format Masukan}
+
+Baris pertama berisi sebuah bilangan bulat N, dengan $(1 \leq N  \leq 10^5)$. 
+
+Untuk setiap N baris berikutnya, terdapat dua input yang menjelaskan perintahnya, yaitu input pertama D untuk arah yang berisi karakter N(atas), E(kanan), S(bawah), W(kiri) lalu diikuti dengan input kedua T yang menyatakan jarak yang ditempuh dengan arah D, dan $(1 \leq T  \leq 10^9)$.
+
+
+\subsection*{Format Keluaran}
+Keluaran berupa satu baris, yang menyatakan total jarak yang ditempuh Rizzrack.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5
+N 2
+E 3
+S 1
+W 5
+N 2
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+9
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+4
+N 3
+E 3
+S 3
+W 5
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+12
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 3}
+\begin{lstlisting}
+2
+N 1
+S 2
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 3}
+\begin{lstlisting}
+1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Untuk sample ke 2, pertama-tama, cyborg akan bergerak 3 unit ke atas, lalu 3 unit ke kanan, lalu 3 unit ke bawah, terakhir 5 unit ke kiri. Namun pada operasi terakhir,  cyborg akan melewati lagi point awal yang telah ia kunjungi, sehingga cyborg akan berhenti sebelum melanjutkan 2 unit perintah yang tersisa. Sehingga total jarak yang ia kunjungi adalah 3 + 3 + 3 + 3 = 12. 
+
+\end{document}

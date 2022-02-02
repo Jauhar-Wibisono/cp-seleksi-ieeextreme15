@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=40mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\lfoot{Seleksi IEEEXtreme 15.0 ITB}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+    \section*{Cello's Restaurant} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+Butcher, merupakan salah satu pegawai pada sebuah restaurant fast food yang bernama Cello's Restaurant. Cello's Restaurant belum memiliki pegawai lain, sehingga Butcher melayani customernya seorang diri. Butcher memiliki sebuah service stand troley yang sangat tinggi dan troley tersebut memiliki tinggi yang dapat berkurang dan bertambah sesuai dengan jumlah tumpukan makanan. Karena troley tersebut sangat tinggi, maka Butcher meletakkan sebuah detector pada  tumpukan makanan teratas untuk menghitung berapa banyak daging yang ada pada tumpukan tersebut. Butcher dapat melakukan 3 hal, yang pertama meletakkan X daging pada tumpukkan paling atas, lalu yang kedua Butcher dapat meletakkan X daging pada Y tumpukkan terbawah, terakhir butcher dapat mengangkat tumpukkan paling atas untuk dimasak dan meletakkan detector pada tumpukkan dibawahnya. Tentukkan berapa banyak daging pada tumpukkan pertama untuk setiap operasi dengan membaca detector tersebut!
+
+\subsection*{Format Masukan}
+Baris pertama berisi N yang menyatakan banyak operasi dengan $(1 \leq N  \leq 10^5)$. 
+Untuk N baris selanjutnya, terdiri dari 3 operasi seperti yang ada pada deskripsi. Jika operasi adalah meletakkan X daging pada tumpukkan pertama, maka input diawali 1 dan diikuti dengan X daging. Jika operasi adalah meletakkan X daging pada Y tumpukkan terbawah, maka input diawal 2, lalu diikuti dengan Y dan X. Jika operasi sekarang adalah mengangkat, maka input adalah 0.
+
+\subsection*{Format Keluaran}
+Keluaran terdiri dari satu baris yang menyatakan banyak daging pada tumpukkan paling atas dan dipisahkan dengan spasi. Jika tumpukkan sekarang adalah kosong, maka keluarkan output string "EMPTY".  Dijamin bahwa tidak ada 2 output "EMPTY" secara berurutan.
+
+\linebreak
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5
+1 2
+1 7 
+1 8 
+2 2 1
+0
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+2 7 8 8 8
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\pagebreak
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+12
+1 4
+0
+1 3
+1 5
+1 2
+2 3 1
+0
+1 1
+2 2 2
+1 4
+0
+0
+\end{lstlisting}
+\null
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+4 EMPTY 3 5 2 3 6 1 1 4 1 8
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+\subsection*{Penjelasan}
+Pada sample 1, berikut merupakan output jumlah daging pada setiap operasi, dengan tumpukkan teratas ditandai dengan bold.
+
+[\textbf{2}]  
+
+[2 \textbf{7}]
+
+[2 7 \textbf{8}]
+
+[3 8 \textbf{8}]
+
+[3 \textbf{8}]
+\end{document}
